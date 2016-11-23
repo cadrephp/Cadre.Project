@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="cadre" default="build">
+
+    <target name="build" depends="prepare,lint,phpcs,phpunit" />
+    <target name="test" depends="phpunit" />
+    <target name="coverage" depends="phpunit-coverage" />
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="build/coverage"/>
+    </target>
+
+    <target name="prepare" depends="clean" description="Prepare for build">
+        <mkdir dir="build/coverage"/>
+    </target>
+
+    <target name="lint" description="Perform syntax check of sourcecode files">
+        <apply executable="php" checkreturn="true">
+            <arg value="-l" />
+
+            <fileset dir="src">
+                <include name="**/*.php" />
+            </fileset>
+
+            <fileset dir="tests">
+                <include name="**/*.php" />
+            </fileset>
+        </apply>
+    </target>
+
+    <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer">
+        <exec executable="vendor/bin/phpcs" passthru="true" checkreturn="true">
+            <arg value="--standard=phpcs.xml" />
+            <arg path="src" />
+            <arg path="tests" />
+        </exec>
+    </target>
+
+    <target name="phpunit" description="Run all tests with PHPUnit">
+        <exec executable="vendor/bin/phpunit" passthru="true" checkreturn="true" />
+    </target>
+
+    <target name="phpunit-coverage" depends="prepare" description="Run all tests and generate html coverage report">
+        <exec executable="vendor/bin/phpunit" passthru="true" checkreturn="true">
+            <arg value="--coverage-html=build/coverage" />
+        </exec>
+    </target>
+
+</project>

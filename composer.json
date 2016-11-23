@@ -1,0 +1,50 @@
+{
+    "name": "cadre/project",
+    "type": "project",
+    "require": {
+        "atlas/orm": "1.x-dev@dev",
+        "aura/session": "^2.1",
+        "cadre/atlasorm-debugbar-bridge": "^1.0",
+        "cadre/module": "^0.2",
+        "maximebf/debugbar": "^1.13",
+        "oscarotero/psr7-middlewares": "^3.18",
+        "radar/adr": "^1.1",
+        "relay/middleware": "^1.1",
+        "robmorgan/phinx": "^0.6",
+        "twig/twig": "^1.25",
+        "zendframework/zend-diactoros": "^1.3"
+    },
+    "require-dev": {
+        "atlas/cli": "0.x-dev@dev",
+        "phing/phing": "^2.15",
+        "phpunit/dbunit": "^2.0",
+        "phpunit/phpunit": "^5.0",
+        "squizlabs/php_codesniffer": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Shell",
+            "email": "andrew@andrewshell.org"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd" : [
+            "php scripts/assetcopy.php"
+        ],
+        "post-update-cmd" : [
+            "php scripts/assetcopy.php"
+        ]
+    },
+    "minimum-stability": "stable"
+}
