@@ -16,6 +16,7 @@
     },
     "require-dev": {
         "atlas/cli": "0.x-dev@dev",
+        "pds/skeleton": "1.x-dev",
         "phing/phing": "^2.15",
         "phpunit/dbunit": "^2.0",
         "phpunit/phpunit": "^5.0",
@@ -40,10 +41,10 @@
     ],
     "scripts": {
         "post-install-cmd" : [
-            "php scripts/assetcopy.php"
+            "php bin/assetcopy.php"
         ],
         "post-update-cmd" : [
-            "php scripts/assetcopy.php"
+            "php bin/assetcopy.php"
         ]
     },
     "minimum-stability": "stable"

@@ -3,6 +3,6 @@
 /config/phinx.php
 /node_modules
 /vendor
-/web/bower_components
-/web/css
-/web/debugbar
+/public/bower_components
+/public/css
+/public/debugbar
