@@ -12,7 +12,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "web/assets",
+    "public/assets",
     "test",
     "tests"
   ],

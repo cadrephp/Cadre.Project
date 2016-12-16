@@ -4,12 +4,12 @@ var gulp = require('gulp'),
 // task
 gulp.task('less', function () {
     gulp.src([
-        './web/less/style.less'
+        './public/less/style.less'
     ]) // path to your file
     .pipe(less())
-    .pipe(gulp.dest('./web/css'));
+    .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['./web/less/**/*.less'], ['less']);
+    gulp.watch(['./public/less/**/*.less'], ['less']);
 });
