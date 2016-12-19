@@ -20,7 +20,6 @@ class Core extends Module
     public function require()
     {
         return [
-            AtlasOrm::class,
             Twig::class,
         ];
     }

@@ -1,5 +1,6 @@
 <?php
 use Cadre\Module\ModuleLoader;
+use Application\Module\AtlasOrm as AtlasOrmModule;
 use Application\Module\Core as CoreModule;
 use Application\Module\Domain as DomainModule;
 use Application\Module\Routing as RoutingModule;
@@ -20,6 +21,7 @@ $boot = new Boot($containerCache);
 $adr = $boot->adr([
     new ModuleLoader(
         [
+            AtlasOrmModule::class,
             CoreModule::class,
             DomainModule::class,
             RoutingModule::class,
