@@ -23,9 +23,8 @@ This is a project skeleton for me to use when starting new projects.
 
 ```bash
 # Setup new project repo
-git clone git@github.com:cadrephp/Cadre.Project.git new-project
-cd new-project
-rm -fr .git
+composer create-project -s dev cadre/project example-project --repository-url=https://packages.cadrephp.com
+cd example-project
 git init .
 
 # Install dependencies
