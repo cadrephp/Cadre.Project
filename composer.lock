@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c38e89e04dfd39e55229c066f50b380c",
+    "hash": "edfe4775609ea94be38f2650b1275d20",
     "content-hash": "03f10fa318b833a2a881b378b3985c9e",
     "packages": [
         {
@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atlasphp/Atlas.Orm.git",
-                "reference": "f9b05e27bc841ea1ab45e1548404be8b91398cf7"
+                "reference": "f1d315db37e59deea52f6015e8058cfbf3c4c672"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atlasphp/Atlas.Orm/zipball/f9b05e27bc841ea1ab45e1548404be8b91398cf7",
-                "reference": "f9b05e27bc841ea1ab45e1548404be8b91398cf7",
+                "url": "https://api.github.com/repos/atlasphp/Atlas.Orm/zipball/f1d315db37e59deea52f6015e8058cfbf3c4c672",
+                "reference": "f1d315db37e59deea52f6015e8058cfbf3c4c672",
                 "shasum": ""
             },
             "require": {
@@ -105,7 +105,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2017-03-07 22:12:41"
+            "time": "2017-03-18 16:01:05"
         },
         {
             "name": "aura/di",
@@ -2157,21 +2157,21 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v2.6.1",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "361f671c269e389c078da9cd2cd6a80164d9813d"
+                "reference": "8605fd18857a4beef4aa0afc19eb9a7f876237e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/361f671c269e389c078da9cd2cd6a80164d9813d",
-                "reference": "361f671c269e389c078da9cd2cd6a80164d9813d",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/8605fd18857a4beef4aa0afc19eb9a7f876237e8",
+                "reference": "8605fd18857a4beef4aa0afc19eb9a7f876237e8",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^2.4.2 || ~3.0.0",
-                "php": ">=5.6.0"
+                "php": ">=7.0"
             },
             "conflict": {
                 "nette/nette": "<2.2"
@@ -2183,7 +2183,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -2207,9 +2207,15 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette PHP Generator",
+            "description": "🐘 Generates neat PHP code for you. Supports new PHP 7.1 features.",
             "homepage": "https://nette.org",
-            "time": "2017-03-14 15:50:04"
+            "keywords": [
+                "code",
+                "nette",
+                "php",
+                "scaffolding"
+            ],
+            "time": "2017-03-18 15:20:10"
         },
         {
             "name": "nette/robot-loader",

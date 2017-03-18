@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ruleset name="Application">
+    <description>A collection of application sniffs.</description>
+</ruleset>

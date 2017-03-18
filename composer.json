@@ -2,6 +2,7 @@
     "name": "cadre/project",
     "type": "project",
     "require": {
+        "php": ">=7.0",
         "atlas/orm": "1.x-dev@dev",
         "aura/session": "^2.1",
         "cadre/atlasorm-debugbar-bridge": "^1.0",
@@ -30,7 +31,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "": "tests/"
+            "": "tests/",
+            "PHP_CodeSniffer\\": "vendor/squizlabs/php_codesniffer/src/"
         }
     },
     "license": "MIT",

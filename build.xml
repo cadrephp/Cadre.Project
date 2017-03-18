@@ -41,6 +41,7 @@
             <arg value="--no-progress" />
             <arg value="--level=4" />
             <arg path="src" />
+            <arg path="tests" />
         </exec>
     </target>
 
