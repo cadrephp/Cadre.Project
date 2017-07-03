@@ -26,7 +26,7 @@ class Twig extends Module
         /** Twig */
 
         $di->params[Twig_Loader_Filesystem::class]['paths'] = [
-            realpath(__ROOTDIR__ . '/views'),
+            realpath(__ROOTDIR__ . '/resources/views'),
         ];
 
         $di->params[Twig_Environment::class] = [

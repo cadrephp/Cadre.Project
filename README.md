@@ -30,8 +30,15 @@ git init .
 # Install dependencies
 composer install
 npm install
-bower install
-gulp less
+
+# Compile assets once
+npm run dev 
+
+# Compile assets automatically when files change
+npm run watch
+
+# Compile assets, but also minify & optimize them
+npm run prod
 
 # Run lint, phpcs, and phpunit
 vendor/bin/phing build
