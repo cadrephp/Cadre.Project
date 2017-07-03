@@ -4,11 +4,9 @@ declare(strict_types=1);
 namespace Application\Module;
 
 use Aura\Di\Container;
-use Aura\Session\SessionFactory;
 use Cadre\Module\Module;
 use Application\Delivery\DefaultResponder;
 use Psr7Middlewares\Middleware\AttributeMapper;
-use Psr7Middlewares\Middleware\AuraSession;
 use Psr7Middlewares\Middleware\Robots;
 use Psr7Middlewares\Middleware\TrailingSlash;
 use Radar\Adr\Handler\RoutingHandler;
@@ -26,7 +24,7 @@ class Core extends Module
         ];
     }
 
-    public function requireDev()
+    public function requireDevelopment()
     {
         return [
             DebugBar::class,
@@ -52,20 +50,10 @@ class Core extends Module
             'exceptionResponse' => $di->lazyNew(Response::class),
         ];
 
-        /** AuraSession */
-
-        $di->params[AuraSession::class] = [
-            'factory' => $di->lazyNew(SessionFactory::class),
-        ];
-
-        $di->setters[AuraSession::class] = [
-            'name' => 'pen-paper',
-        ];
-
         /** Robots */
 
         $di->params[Robots::class] = [
-            'allow' => !$this->loader()->isDev(),
+            'allow' => !$this->loader()->isEnv('development'),
         ];
 
         /** TrailingSlash */
@@ -82,7 +70,6 @@ class Core extends Module
 
         $di->params[AttributeMapper::class] = [
             'mapping' => [
-                AuraSession::KEY => 'session',
             ],
         ];
     }
@@ -95,7 +82,6 @@ class Core extends Module
         $adr->middle(Robots::class);
         $adr->middle(ExceptionHandler::class);
         $adr->middle(TrailingSlash::class);
-        $adr->middle(AuraSession::class);
         $adr->middle(AttributeMapper::class);
         $adr->middle(RoutingHandler::class);
         $adr->middle(ActionHandler::class);

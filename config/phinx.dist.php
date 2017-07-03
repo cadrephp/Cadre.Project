@@ -11,9 +11,9 @@ return [
         'development' => [
             'adapter' => 'mysql',
             'host' => 'localhost',
-            'name' => 'dbname',
-            'user' => 'username',
-            'pass' => 'password',
+            'name' => 'homestead',
+            'user' => 'homestead',
+            'pass' => 'secret',
             'port' => 3306,
             'charset' => 'utf8',
         ]
