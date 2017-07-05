@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Application\Module;
 
+use Application\Domain\Home;
 use Aura\Di\Container;
 use Cadre\Module\Module;
 
@@ -16,8 +17,7 @@ class Routing extends Module
     {
         $adr = $di->get('radar/adr:adr');
 
-        $adr->get('Home', '/', function () {
-            return ['success' => true];
-        })->defaults(['_view' => 'home.html.twig']);
+        $adr->get('Home', '/', Home::class)
+            ->defaults(['_view' => 'home.html.twig']);
     }
 }

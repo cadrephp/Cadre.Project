@@ -5,6 +5,7 @@ namespace Application\Module;
 
 use Aura\Di\Container;
 use Cadre\Module\Module;
+use Application\Delivery\DefaultInput;
 use Application\Delivery\DefaultResponder;
 use Psr7Middlewares\Middleware\AttributeMapper;
 use Psr7Middlewares\Middleware\Robots;
@@ -86,6 +87,7 @@ class Core extends Module
         $adr->middle(RoutingHandler::class);
         $adr->middle(ActionHandler::class);
 
+        $adr->input(DefaultInput::class);
         $adr->responder(DefaultResponder::class);
     }
 }

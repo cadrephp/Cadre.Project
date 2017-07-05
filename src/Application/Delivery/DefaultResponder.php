@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Application\Delivery;
 
+use Cadre\DomainSession\Session;
+use Dflydev\FigCookies\FigResponseCookies;
+use Dflydev\FigCookies\SetCookie;
 use Radar\Adr\Responder\ResponderAcceptsInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -13,12 +16,10 @@ class DefaultResponder implements ResponderAcceptsInterface
     protected $request;
     protected $response;
     protected $twig;
-    protected $debugbar;
 
-    public function __construct(Twig_Environment $twig, DebugBar $debugbar = null)
+    public function __construct(Twig_Environment $twig)
     {
         $this->twig = $twig;
-        $this->debugbar = $debugbar;
     }
 
     public static function accepts()
@@ -38,6 +39,15 @@ class DefaultResponder implements ResponderAcceptsInterface
         } else {
             $this->error($payload);
         }
+        if (isset($payload['session']) && $payload['session'] instanceof Session) {
+            if ($payload['session']->getId()->hasUpdatedValue()) {
+                $this->response = FigResponseCookies::set(
+                    $this->response,
+                    SetCookie::create('SESSION_ID')
+                        ->withValue($payload['session']->getId()->value())
+                );
+            }
+        }
         return $this->response;
     }
 
@@ -51,20 +61,6 @@ class DefaultResponder implements ResponderAcceptsInterface
     {
         $view = $this->request->getAttribute('_view', 'index.html.twig');
         $body = $this->twig->render($view, $data);
-
-        if (isset($this->debugbar)) {
-            $debugbarRenderer = $this->debugbar->getJavascriptRenderer();
-            $body = str_replace(
-                '<!-- DebugBar::renderHead -->',
-                str_replace(
-                    '/vendor/maximebf/debugbar/src/DebugBar/Resources',
-                    '/debugbar',
-                    $debugbarRenderer->renderHead()
-                ),
-                $body
-            );
-            $body = str_replace('<!-- DebugBar::render -->', $debugbarRenderer->render(), $body);
-        }
 
         $this->response = $this->response->withHeader('Content-Type', 'text/html');
         $this->response->getBody()->write($body);
