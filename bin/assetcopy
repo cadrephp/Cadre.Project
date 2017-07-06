@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 $copyFolders = [
     __DIR__ . '/../vendor/maximebf/debugbar/src/DebugBar/Resources' =>

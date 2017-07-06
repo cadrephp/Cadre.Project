@@ -1,10 +1,11 @@
+#!/usr/bin/env php
 <?php
-use Cadre\Module\ModuleLoader;
 use Application\Module\AtlasOrm as AtlasOrmModule;
-use Application\Module\Core as CoreModule;
+use Application\Module\Cli as CliModule;
 use Application\Module\Domain as DomainModule;
-use Application\Module\Routing as RoutingModule;
-use Radar\Adr\Boot;
+use Aura\Cli\CliFactory;
+use Cadre\CliAdr\Boot;
+use Cadre\Module\ModuleLoader;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequestFactory as Request;
 
@@ -25,12 +26,15 @@ $adr = $boot->adr([
     new ModuleLoader(
         [
             AtlasOrmModule::class,
-            CoreModule::class,
+            CliModule::class,
             DomainModule::class,
-            RoutingModule::class,
         ],
         CADRE_ENV
     ),
 ]);
 
-$adr->run(Request::fromGlobals(), new Response());
+$factory = new CliFactory();
+$context = $factory->newContext($GLOBALS);
+$stdio = $factory->newStdio();
+
+exit($adr->run($context, $stdio));

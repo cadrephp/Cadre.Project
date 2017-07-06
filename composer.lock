@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e200e9fa7c90e48869554fac75e66bb6",
+    "content-hash": "4399ce45bbfc86c1452d00dc2df51c70",
     "packages": [
         {
             "name": "arbiter/arbiter",
@@ -106,6 +106,63 @@
                 "sql"
             ],
             "time": "2017-06-29T16:58:16+00:00"
+        },
+        {
+            "name": "aura/cli",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.Cli.git",
+                "reference": "d69cfa6d81e94e13d831e38ad9e3d53aa0f08a8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auraphp/Aura.Cli/zipball/d69cfa6d81e94e13d831e38ad9e3d53aa0f08a8b",
+                "reference": "d69cfa6d81e94e13d831e38ad9e3d53aa0f08a8b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "aura/di": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library",
+                    "config": {
+                        "common": "Aura\\Cli\\_Config\\Common"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aura\\Cli\\": "src/",
+                    "Aura\\Cli\\_Config\\": "config/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aura.Cli Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.Cli/contributors"
+                }
+            ],
+            "description": "Provides the equivalent of request (Context) and response (Stdio) classes for a command line environment, including Getopt support.",
+            "homepage": "https://github.com/auraphp/Aura.Cli",
+            "keywords": [
+                "cli",
+                "command",
+                "command line",
+                "getopt",
+                "options",
+                "stdio"
+            ],
+            "time": "2017-02-09T17:14:27+00:00"
         },
         {
             "name": "aura/di",
@@ -449,6 +506,51 @@
             ],
             "description": "Library to use PHP DebugBar with Atlas ORM",
             "time": "2017-02-17T12:56:44+00:00"
+        },
+        {
+            "name": "cadre/cliadr",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cadrephp/Cadre.CliAdr.git",
+                "reference": "703d7f11e44b66175bb79c22dd751cb73bd95aa9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cadrephp/Cadre.CliAdr/zipball/703d7f11e44b66175bb79c22dd751cb73bd95aa9",
+                "reference": "703d7f11e44b66175bb79c22dd751cb73bd95aa9",
+                "shasum": ""
+            },
+            "require": {
+                "aura/cli": "^2.2.0",
+                "aura/di": "^3.2.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "pds/skeleton": "^1.0.0",
+                "phing/phing": "^2.15",
+                "phpstan/phpstan": "^0.7.0",
+                "phpunit/phpunit": "^6.2.3",
+                "squizlabs/php_codesniffer": "^3.0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cadre\\CliAdr\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Shell",
+                    "email": "andrew@andrewshell.org"
+                }
+            ],
+            "description": "Command line ADR implementation",
+            "time": "2017-07-06T01:41:13+00:00"
         },
         {
             "name": "cadre/domain-session",
@@ -1710,63 +1812,6 @@
                 "sql"
             ],
             "time": "2017-04-05T19:05:47+00:00"
-        },
-        {
-            "name": "aura/cli",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/auraphp/Aura.Cli.git",
-                "reference": "d69cfa6d81e94e13d831e38ad9e3d53aa0f08a8b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/auraphp/Aura.Cli/zipball/d69cfa6d81e94e13d831e38ad9e3d53aa0f08a8b",
-                "reference": "d69cfa6d81e94e13d831e38ad9e3d53aa0f08a8b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "aura/di": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "aura": {
-                    "type": "library",
-                    "config": {
-                        "common": "Aura\\Cli\\_Config\\Common"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Aura\\Cli\\": "src/",
-                    "Aura\\Cli\\_Config\\": "config/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Aura.Cli Contributors",
-                    "homepage": "https://github.com/auraphp/Aura.Cli/contributors"
-                }
-            ],
-            "description": "Provides the equivalent of request (Context) and response (Stdio) classes for a command line environment, including Getopt support.",
-            "homepage": "https://github.com/auraphp/Aura.Cli",
-            "keywords": [
-                "cli",
-                "command",
-                "command line",
-                "getopt",
-                "options",
-                "stdio"
-            ],
-            "time": "2017-02-09T17:14:27+00:00"
         },
         {
             "name": "aura/sqlschema",
