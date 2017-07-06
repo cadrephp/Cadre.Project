@@ -4,20 +4,21 @@ This is a project skeleton for me to use when starting new projects.
 
 ## Preconfigured Libraries
 
-- [Composer](https://getcomposer.org/) PHP dependency manager
-- [Radar](https://github.com/radarphp/Radar.Project) ADR system
-- [Cadre.Module](https://github.com/cadrephp/Cadre.Module) support
 - [Atlas.ORM](https://github.com/atlasphp/Atlas.Orm)
-- [Twig](http://twig.sensiolabs.org/)
-- [PHP Debug Bar](http://phpdebugbar.com/)
+- [Bootstrap for Sass](http://getbootstrap.com/) HTML, CSS, and JS framework
+- [Cadre.CliAdr](https://github.com/cadrephp/Cadre.CliAdr) Command line Action-Domain-Responder (ADR) implementation
+- [Cadre.DomainSession](https://github.com/cadrephp/Cadre.DomainSession) Library for tracking session data within the domain
+- [Cadre.Module](https://github.com/cadrephp/Cadre.Module) Aura.Di compatible extension for related modules
+- [Composer](https://getcomposer.org/) PHP dependency manager
 - [Phing](https://www.phing.info/) PHP build system
-- [PHPUnit](https://phpunit.de/) for testing and code coverage
-- [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 - [Phinx](https://phinx.org/) PHP Database Migrations
-- [Gulp](http://gulpjs.com/) JS build system
-- [Bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework
-- [Less](http://lesscss.org/) CSS pre-processor
-- [Bower](https://bower.io/) JS package manager
+- [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+- [PHP Debug Bar](http://phpdebugbar.com/)
+- [PHPUnit](https://phpunit.de/) for testing and code coverage
+- [Radar](https://github.com/radarphp/Radar.Project) ADR system
+- [Sass](http://sass-lang.com/) CSS extension language
+- [Twig](http://twig.sensiolabs.org/)
+- [Webpack Encore](https://github.com/symfony/webpack-encore) Module bundler
 
 ## Setup
 
