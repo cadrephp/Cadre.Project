@@ -36,7 +36,7 @@ abstract class AtlasTestCase extends TestCase
             if (self::$pdo === null) {
                 self::$pdo = self::$atlasContainer->getConnectionLocator()->getDefault()->getPdo();
                 $environment = new Environment('testing', ['connection' => self::$pdo]);
-                $phinxDir = __ROOTDIR__ . '/config/db';
+                $phinxDir = constant('__ROOTDIR__') . '/config/db';
                 $config = new Config([
                     'paths' => [
                         'migrations' => $phinxDir . '/migrations',
@@ -83,7 +83,7 @@ abstract class AtlasTestCase extends TestCase
 
     protected function getMappers()
     {
-        $pattern = __ROOTDIR__ . '/src/AtlasOrm/DataSource/*/*Mapper.php';
+        $pattern = constant('__ROOTDIR__') . '/src/AtlasOrm/DataSource/*/*Mapper.php';
         $mappers = glob($pattern);
         foreach ($mappers as $i => $file) {
             $mappers[$i] = 'DateCheckPro\\AtlasOrm\\'

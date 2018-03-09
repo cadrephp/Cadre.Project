@@ -14,7 +14,7 @@ class Domain extends Module
     public function define(Container $di)
     {
         $di->params[Files::class] = [
-            'path' => __ROOTDIR__ . '/sessions',
+            'path' => constant('__ROOTDIR__') . '/sessions',
         ];
 
         $di->params[SessionManager::class] = [

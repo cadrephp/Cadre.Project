@@ -21,7 +21,7 @@ class AtlasOrm extends Module
         $di->set('atlas:container', $di->lazyNew($atlasContainerClass));
         $di->set('atlas', $di->lazyGetCall('atlas:container', 'getAtlas'));
 
-        $conn = include(__ROOTDIR__ . '/config/conn.php');
+        $conn = include(constant('__ROOTDIR__') . '/config/conn.php');
 
         $di->params[$atlasContainerClass] = [
             'dsn'        => $conn[0],

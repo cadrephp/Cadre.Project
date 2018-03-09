@@ -11,10 +11,10 @@ use Zend\Diactoros\ServerRequestFactory as Request;
 date_default_timezone_set('UTC');
 define('__ROOTDIR__', realpath(__DIR__ . '/../'));
 
-require __ROOTDIR__ . '/vendor/autoload.php';
+require constant('__ROOTDIR__') . '/vendor/autoload.php';
 
 if (!defined('CADRE_ENV')) {
-    $config = require(__ROOTDIR__ . '/config/phinx.php');
+    $config = require(constant('__ROOTDIR__') . '/config/phinx.php');
     define('CADRE_ENV', strtoupper($config['environments']['default_database']));
 }
 
@@ -29,7 +29,7 @@ $adr = $boot->adr([
             DomainModule::class,
             RoutingModule::class,
         ],
-        CADRE_ENV
+        constant('CADRE_ENV')
     ),
 ]);
 

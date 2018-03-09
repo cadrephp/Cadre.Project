@@ -40,6 +40,7 @@
             <arg value="analyse" />
             <arg value="--no-progress" />
             <arg value="--level=4" />
+            <arg path="public" />
             <arg path="src" />
             <arg path="tests" />
         </exec>

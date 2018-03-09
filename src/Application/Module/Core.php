@@ -9,6 +9,7 @@ use Application\Delivery\DefaultInput;
 use Application\Delivery\DefaultResponder;
 use Psr7Middlewares\Middleware\Robots;
 use Psr7Middlewares\Middleware\TrailingSlash;
+use Radar\Adr\Adr;
 use Radar\Adr\Handler\RoutingHandler;
 use Radar\Adr\Handler\ActionHandler;
 use Relay\Middleware\ExceptionHandler;
@@ -71,14 +72,16 @@ class Core extends Module
     {
         $adr = $di->get('radar/adr:adr');
 
-        $adr->middle(ResponseSender::class);
-        $adr->middle(Robots::class);
-        $adr->middle(ExceptionHandler::class);
-        $adr->middle(TrailingSlash::class);
-        $adr->middle(RoutingHandler::class);
-        $adr->middle(ActionHandler::class);
+        if ($adr instanceof Adr) {
+            $adr->middle(ResponseSender::class);
+            $adr->middle(Robots::class);
+            $adr->middle(ExceptionHandler::class);
+            $adr->middle(TrailingSlash::class);
+            $adr->middle(RoutingHandler::class);
+            $adr->middle(ActionHandler::class);
 
-        $adr->input(DefaultInput::class);
-        $adr->responder(DefaultResponder::class);
+            $adr->__call('input', [DefaultInput::class]);
+            $adr->__call('responder', [DefaultResponder::class]);
+        }
     }
 }

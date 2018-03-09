@@ -6,7 +6,6 @@ namespace Application\Module;
 use Application\Delivery\DebugBarTwigExtension;
 use Aura\Di\Container;
 use Cadre\Module\Module;
-use DebugBar\Bridge\Twig\TraceableTwigEnvironment;
 use Twig_Environment;
 use Twig_Extension_Debug;
 use Twig_Extension_Profiler;
@@ -26,7 +25,7 @@ class Twig extends Module
         /** Twig */
 
         $di->params[Twig_Loader_Filesystem::class]['paths'] = [
-            realpath(__ROOTDIR__ . '/resources/views'),
+            realpath(constant('__ROOTDIR__') . '/resources/views'),
         ];
 
         $di->params[Twig_Environment::class] = [
