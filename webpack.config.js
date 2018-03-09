@@ -14,7 +14,7 @@ Encore
     .addEntry('js/app', './resources/assets/js/app.js')
 
     // will output as public/build/css/app.css
-    .addStyleEntry('css/app', './resources/assets/sass/app.scss')
+    .addStyleEntry('css/app', './resources/assets/scss/app.scss')
 
     // allow less files to be processed
     .enableSassLoader()

@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="/build/css/app.css">
 
-    <!-- DebugBar::renderHead -->
+    {{ dbg_renderHead() }}
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -17,13 +17,13 @@
     <![endif]-->
 </head>
 <body>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#">Cadre</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Cadre</a>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
             </ul>
@@ -36,6 +36,6 @@
 
     <script src="/build/js/app.js"></script>
 
-    <!-- DebugBar::render -->
+    {{ dbg_render() }}
 </body>
 </html>

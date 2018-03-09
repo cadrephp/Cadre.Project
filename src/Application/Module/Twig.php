@@ -3,12 +3,15 @@ declare(strict_types=1);
 
 namespace Application\Module;
 
+use Application\Delivery\DebugBarTwigExtension;
 use Aura\Di\Container;
 use Cadre\Module\Module;
 use DebugBar\Bridge\Twig\TraceableTwigEnvironment;
 use Twig_Environment;
 use Twig_Extension_Debug;
+use Twig_Extension_Profiler;
 use Twig_Loader_Filesystem;
+use Twig_Profiler_Profile;
 use Twig_SimpleFunction;
 
 class Twig extends Module
@@ -17,11 +20,8 @@ class Twig extends Module
     {
         /** Services */
 
-        if ($this->loader()->loaded(DebugBar::class)) {
-            $di->set('twig:environment', $di->lazyNew(TraceableTwigEnvironment::class));
-        } else {
-            $di->set('twig:environment', $di->lazyNew(Twig_Environment::class));
-        }
+        $di->set('twig:environment', $di->lazyNew(Twig_Environment::class));
+        $di->set('twig:profile', $di->lazyNew(Twig_Profiler_Profile::class));
 
         /** Twig */
 
@@ -34,8 +34,19 @@ class Twig extends Module
             'options' => ['debug' => true],
         ];
 
-        $di->setters[Twig_Environment::class]['setExtensions'] = $di->lazyArray([
-            $di->lazyNew(Twig_Extension_Debug::class),
-        ]);
+        $di->params[Twig_Extension_Profiler::class] = [
+            'profile' => $di->lazyGet('twig:profile'),
+        ];
+
+        $extensions = [];
+
+        $extensions[] = $di->lazyNew(Twig_Extension_Debug::class);
+        $extensions[] = $di->lazyNew(DebugBarTwigExtension::class);
+
+        if ($this->loader()->loaded(DebugBar::class)) {
+            $extensions[] = $di->lazyNew(Twig_Extension_Profiler::class);
+        }
+
+        $di->setters[Twig_Environment::class]['setExtensions'] = $di->lazyArray($extensions);
     }
 }

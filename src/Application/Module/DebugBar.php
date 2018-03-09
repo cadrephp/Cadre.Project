@@ -6,16 +6,18 @@ namespace Application\Module;
 use Aura\Di\Container;
 use Cadre\AtlasOrmDebugBarBridge\AtlasOrmCollector;
 use Cadre\Module\Module;
-use DebugBar\Bridge\Twig\TraceableTwigEnvironment;
 use DebugBar\DataCollector\ExceptionsCollector;
 use DebugBar\DataCollector\MemoryCollector;
 use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\DataCollector\PhpInfoCollector;
 use DebugBar\DataCollector\RequestDataCollector;
 use DebugBar\DataCollector\TimeDataCollector;
+use DebugBar\Bridge\TwigProfileCollector;
 use DebugBar\Bridge\Twig\TwigCollector;
 use Application\Delivery\DebugBar as LocalDebugBar;
+use Application\Delivery\DebugBarTwigExtension;
 use Twig_Environment;
+use Twig_Profiler_Profile;
 
 class DebugBar extends Module
 {
@@ -36,17 +38,16 @@ class DebugBar extends Module
             $di->lazyNew(ExceptionsCollector::class),
         ];
 
+        $di->params[DebugBarTwigExtension::class] = [
+            'debugbar' => $di->lazyGet('debugbar'),
+        ];
+
         if ($this->loader()->loaded(Twig::class)) {
-            $di->params[TraceableTwigEnvironment::class] = [
-                'twig' => $di->lazyNew(Twig_Environment::class),
-                'timeDataCollector' => $di->lazyGet('debugbar:tdc'),
+            $di->params[TwigProfileCollector::class] = [
+                'profile' => $di->lazyGet('twig:profile'),
             ];
 
-            $di->params[TwigCollector::class] = [
-                'twig' => $di->lazyGet('twig:environment'),
-            ];
-
-            $collectors[] = $di->lazyNew(TwigCollector::class);
+            $collectors[] = $di->lazyNew(TwigProfileCollector::class);
         }
 
         if ($this->loader()->loaded(AtlasOrm::class)) {
